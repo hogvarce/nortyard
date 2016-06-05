@@ -13,3 +13,7 @@
 #list  li .thumb img {
     cursor: pointer;
 }
+
+#list .desc {
+    word-wrap: break-word;
+}

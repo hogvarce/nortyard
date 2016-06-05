@@ -6,42 +6,8 @@ import VideoSelected from './views/video_selected';
 
 const API_KEY = 'AIzaSyB7Oa57QXJwmPTHBedbChar8_BGFG3xNLo';
 
-const App = new Marionette.Application();
-
-
-App.addRegions({
-    "mainRegion": "#main"
-});
-
-App.on('start', function() {
-  Backbone.history.start();
-});
-
-let MyController = Marionette.Controller.extend({
-  home: (id) => {
-      videoSearch(id);
-      $(document).on('click', 'button.btn', (event)=>{
-         router.navigate($('input[name="search"]').val(), {trigger: true, replace: true});
-      })
-  }
-});
-
-let myController = new MyController();
-
-let MyRouter = Marionette.AppRouter.extend({});
-
-let router = new MyRouter();
-router.processAppRoutes(myController, {
-  ":id": "home"
-});
-
-App.start();
-
-$(document).on('click', (event)=>{
-     router.navigate($('input[name="search"]').val(), {trigger: true, replace: true});
-});
-
-function videoSearch(id){
+//функция отправляющая запрос на youtube
+const videoSearch = (id) => {
     YTSearch({key: API_KEY, term: id}, (videos) => {
 
         console.log(videos);
@@ -51,6 +17,7 @@ function videoSearch(id){
         for (let video in videos){
             collection.push({
                 id: videos[video].id.videoId,
+                title: videos[video].snippet.title,
                 desc: videos[video].snippet.description,
                 thumb: videos[video].snippet.thumbnails.default.url,
             });
@@ -69,3 +36,41 @@ function videoSearch(id){
         layout.showChildView('selected', selectedView);
     });
 }
+// меняем хеш
+const changeHash = () => {
+    $(document).on('click', 'button.btn', (event)=>{
+       router.navigate($('input[name="search"]').val(), {trigger: true, replace: true});
+    })
+};
+
+
+const App = new Marionette.Application();
+
+
+App.addRegions({
+    "mainRegion": "#main"
+});
+
+App.on('start', function() {
+  Backbone.history.start();
+});
+
+let MyController = Marionette.Controller.extend({
+  home: (id) => {
+      videoSearch(id);
+      changeHash();
+  }
+});
+
+let myController = new MyController();
+
+let MyRouter = Marionette.AppRouter.extend({});
+
+let router = new MyRouter();
+router.processAppRoutes(myController, {
+  ":id": "home"
+});
+
+App.start();
+
+changeHash();

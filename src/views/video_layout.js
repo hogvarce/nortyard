@@ -6,16 +6,19 @@ const VideoLayout = Marionette.LayoutView.extend({
         list: "#list"
     },
     ui: {
-        thumb: '.thumb img'
+        item: '#list .thumb'
     },
     events: {
-        'click @ui.thumb': 'changeSelected'
+        'click @ui.item': 'changeSelected'
     },
-    changeSelected: (domEvent) => {
-        let desc = $(domEvent.target).parent().prev().text();
-        let idVideo = domEvent.target.attributes[1].nodeValue;
+    changeSelected: (e) => {
+        let item = $(e.target).parent().parent();
+        let desc =item.children('.desc').text();
+        let idVideo = item.data('id');
+        let title = item.children('.title').text();
         $('#selected iframe').attr('src','https://www.youtube.com/embed/'+idVideo);
         $('#selected p').text(desc);
+        $('#selected h1').text(title);
     }
 });
 

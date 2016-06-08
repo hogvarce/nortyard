@@ -1,16 +1,31 @@
 angular.module('App')
-.controller('PositionCtrl', function PositionCtrl($scope, $localStorage, $sessionStorage) {
+.controller('PositionCtrl', function PositionCtrl($scope, $localStorage, $sessionStorage, $q) {
+
+    let asyncGreet = function () {
+      var deferred = $q.defer();
+      setTimeout(function() {
+          deferred.resolve();
+      }, 3500);
+      return deferred.promise;
+    }
+
+    let promise = asyncGreet();
+
     $scope.position = [];
     $scope.$storage = $localStorage.$default({
         position: []
     });
     $scope.onCreate = function(){
-       $scope.$storage.position.push({
-           "position_id": $scope.position.position_id,
-           "position_name": $scope.position.position_name,
-           "salary": $scope.position.salary
+        promise.then(function() {
+           $scope.$storage.position.push({
+               "position_id": $scope.position.position_id,
+               "position_name": $scope.position.position_name,
+               "salary": $scope.position.salary
+           });
+           $.jGrowl("Ура! Запись создана.", {position: 'bottom-right'});
+       }, function(reason) {
+           $.jGrowl("Ошибка записи", {position: 'bottom-right'});
        });
-       $.jGrowl("Ура! Запись создана.", {position: 'bottom-right'});
     }
     $scope.onRemove = function(item, index){
         if (confirm("Ты точно не передумаешь?")){

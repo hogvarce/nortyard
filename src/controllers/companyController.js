@@ -1,17 +1,32 @@
 angular.module('App')
-.controller('CompanyCtrl', function CompanyCtrl($scope, $localStorage, $sessionStorage) {
+.controller('CompanyCtrl', function CompanyCtrl($scope, $localStorage, $sessionStorage, $q) {
+
+    let asyncGreet = function () {
+      var deferred = $q.defer();
+      setTimeout(function() {
+          deferred.resolve();
+      }, 3500);
+      return deferred.promise;
+    }
+
+    let promise = asyncGreet();
+
     $scope.company = [];
     $scope.$storage = $localStorage.$default({
         company: []
     });
     $scope.onCreate = function(){
-       $scope.$storage.company.push({
-           "company_id": $scope.company.company_id,
-           "company_name": $scope.company.company_name,
-           "description": $scope.company.description,
-           "logo": $scope.company.logo
+        promise.then(function() {
+           $scope.$storage.company.push({
+               "company_id": $scope.company.company_id,
+               "company_name": $scope.company.company_name,
+               "description": $scope.company.description,
+               "logo": $scope.company.logo
+           });
+           $.jGrowl("Ура! Запись создана.", {position: 'bottom-right'});
+       }, function(reason) {
+           $.jGrowl("Ошибка записи", {position: 'bottom-right'});
        });
-       $.jGrowl("Ура! Запись создана.", {position: 'bottom-right'});
     }
     $scope.onRemove = function(item, index){
         if (confirm("Ты точно не передумаешь?")){

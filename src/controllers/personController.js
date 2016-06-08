@@ -1,19 +1,34 @@
 angular.module('App')
-.controller('PersonCtrl', function PersonCtrl($scope, $localStorage, $sessionStorage) {
+.controller('PersonCtrl', function PersonCtrl($scope, $localStorage, $sessionStorage, $q) {
+
+    let asyncGreet = function () {
+      var deferred = $q.defer();
+      setTimeout(function() {
+          deferred.resolve();
+      }, 3500);
+      return deferred.promise;
+    }
+
+    let promise = asyncGreet();
+
   $scope.person = [];
   $scope.$storage = $localStorage.$default({
       person: []
   });
   $scope.onCreate = function(){
-     $scope.$storage.person.push({
-         "person_id": $scope.person.person_id,
-         "first_name": $scope.person.first_name,
-         "last_name": $scope.person.last_name,
-         "middle_name": $scope.person.middle_name,
-         "email": $scope.person.email,
-         "phone_number": $scope.person.phone_number
-     });
-     $.jGrowl("Ура! Запись создана.", {position: 'bottom-right'});
+    promise.then(function() {
+        $scope.$storage.person.push({
+            "person_id": $scope.person.person_id,
+            "first_name": $scope.person.first_name,
+            "last_name": $scope.person.last_name,
+            "middle_name": $scope.person.middle_name,
+            "email": $scope.person.email,
+            "phone_number": $scope.person.phone_number
+        });
+        $.jGrowl("Ура! Запись создана.", {position: 'bottom-right'});
+    }, function(reason) {
+        $.jGrowl("Ошибка записи", {position: 'bottom-right'});
+    });
   }
   $scope.onRemove = function(item, index){
       if (confirm("Ты точно не передумаешь?")){

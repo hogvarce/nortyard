@@ -14,7 +14,7 @@
     <tbody>
         <tr>
             <td><input class="form-control" type="text" name="user_id" ng-model="user.user_id" value="" /></td>
-            <td><input class="form-control" type="text" name="nickname" ng-model="ituserem.nickname" value="" /></td>
+            <td><input class="form-control" type="text" name="nickname" ng-model="user.nickname" value="" /></td>
             <td><input class="form-control" type="text" name="department_id" ng-model="user.department_id" value="" /></td>
             <td><input class="form-control" type="text" name="person_id" ng-model="user.person_id" value="" /></td>
             <td><input class="form-control" type="text" name="position_id" ng-model="user.position_id" value="" /></td>
@@ -24,7 +24,7 @@
         </tr>
         <tr ng-repeat="user in $storage.user">
             <td><input class="form-control" type="text" name="user_id" ng-model="user.user_id" value="{{user.user_id}}" /></td>
-            <td><input class="form-control" type="text" name="nickname" ng-model="ituserem.nickname" value="{{user.nickname}}" /></td>
+            <td><input class="form-control" type="text" name="nickname" ng-model="user.nickname" value="{{user.nickname}}" /></td>
             <td><input class="form-control" type="text" name="department_id" ng-model="user.department_id" value="{{user.department_id}}" /></td>
             <td><input class="form-control" type="text" name="person_id" ng-model="user.person_id" value="{{user.person_id}}" /></td>
             <td><input class="form-control" type="text" name="position_id" ng-model="user.position_id" value="{{user.position_id}}" /></td>

@@ -2,7 +2,7 @@ import App from './app.js';
 
 $(document).ready(() => {
 
-    $.jGrowl("Hello!", {position: 'bottom-right'});
+    $.jGrowl("Привет!", {position: 'bottom-right'});
 
     App.renderList($('#tabs .active a').text());
 
@@ -17,6 +17,11 @@ $(document).ready(() => {
 
     $('#myModal').on('show.bs.modal',(e) => {
         App.getHeaders('#myModal');
+        App.changeTypeInput($(e.target));
+    });
+
+    $('#editModal').on('show.bs.modal',(e) => {
+        App.changeTypeInput($(e.target));
     });
 
     $('#getWrite').on('click', () => {

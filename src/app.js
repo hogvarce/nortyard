@@ -5,7 +5,7 @@ const App = {
     promise: new Promise((resolve, reject) => {
           setTimeout(() => {
             resolve("result");
-        }, 1500);
+        }, 4500);
     }),
     renderList: (tab) => {
         let list = storage.get(tab) || [];
@@ -26,7 +26,11 @@ const App = {
         });
         $(modal).find('.modal-body > form').html('');
         for(let header in App.headers) {
-            $(modal).find('.modal-body > form').append('<div class="form-group"><label for="'+App.headers[header]+'">'+App.headers[header]+'</label><input class="form-control" type="text" name="'+App.headers[header]+'"></div>');
+            $(modal).find('.modal-body > form').append('<div class="form-group"><label for="'+
+            App.headers[header]+'">'+
+            App.headers[header]+
+            '</label><input class="form-control" type="text" name="'+
+            App.headers[header]+'"></div>');
         }
     },
     writeData: () => {
@@ -103,6 +107,13 @@ const App = {
                 $.jGrowl("Ошибка записи", {position: 'bottom-right'});
             }
           );
+    },
+    changeTypeInput: (modal)=> {
+        $('.table.active thead tr th').each(function(e){
+            if ($(this).attr('data-upload')) {
+                $(modal).find('.form-group').eq(e).find('input').attr('type','file');
+            }
+        });
     }
 };
 

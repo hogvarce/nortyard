@@ -1,40 +1,94 @@
-import App from './app.js';
+const App = angular.module('App', ['ngRoute']);
 
-$(document).ready(() => {
+App.config(function($routeProvider){
+    $routeProvider
+        .when('/', {
+            templateUrl : '/templates/person.tpl.html',
+            controller  : 'PersonCtrl'
+        })
+        .when('/user', {
+            templateUrl : '/templates/user.tpl.html',
+            controller  : 'UserCtrl'
+        })
+        .when('/position', {
+            templateUrl : '/templates/position.tpl.html',
+            controller  : 'PositionCtrl'
+        })
+        .when('/department', {
+            templateUrl : '/templates/department.tpl.html',
+            controller  : 'DepartmentCtrl'
+        })
+        .when('/company', {
+            templateUrl : '/templates/company.tpl.html',
+            controller  : 'CompanyCtrl'
+        })
+});
 
-    $.jGrowl("Привет!", {position: 'bottom-right'});
-
-    App.renderList($('#tabs .active a').text());
-
-    $('#tabs a').click((e) => {
-      e.preventDefault();
-      $(this).tab('show');
-    });
-
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {;
-         App.renderList($('#tabs .active a').text());
-    });
-
-    $('#myModal').on('show.bs.modal',(e) => {
-        App.getHeaders('#myModal');
-        App.changeTypeInput($(e.target));
-    });
-
-    $('#editModal').on('show.bs.modal',(e) => {
-        App.changeTypeInput($(e.target));
-    });
-
-    $('#getWrite').on('click', () => {
-        App.writeData();
-    })
-
-    $('#editWrite').on('click', () => {
-        App.saveEditData();
-    })
-
-    $(document).on('click', 'button.remove', (e) => {
-        App.deleteData(e.target);
-    }).on('click', 'button.edit', (e) => {
-        App.editData(e.target);
-    });
+App.controller('PersonCtrl', function PhoneListController($scope) {
+  $scope.persons = [];
+  $scope.onCreate = function(){
+     $scope.persons.push({
+         "person_id": $scope.person.person_id,
+         "first_name": $scope.person.first_name,
+         "last_name": $scope.person.last_name,
+         "middle_name": $scope.person.middle_name,
+         "email": $scope.person.email,
+         "phone_number": $scope.person.phone_number
+     });
+  }
+  $scope.onRemove = function(item, index){
+      $scope.persons.splice(index, 1);
+  }
+});
+App.controller('UserCtrl', function PhoneListController($scope) {
+  $scope.users = [];
+  $scope.onCreate = function(){
+     $scope.users.push({
+         "user_id": $scope.user.user_id,
+         "nickname": $scope.user.nickname,
+         "department_id": $scope.user.department_id,
+         "person_id": $scope.user.person_id,
+         "position_id": $scope.user.position_id,
+         "super_user": $scope.user.super_user
+     });
+  }
+});
+App.controller('PositionCtrl', function PhoneListController($scope) {
+  $scope.persons = [];
+  $scope.onCreate = function(){
+     $scope.persons.push({
+         "person_id": $scope.person.person_id,
+         "first_name": $scope.person.first_name,
+         "last_name": $scope.person.last_name,
+         "middle_name": $scope.person.middle_name,
+         "email": $scope.person.email,
+         "phone_number": $scope.person.phone_number
+     });
+  }
+});
+App.controller('DepartmentCtrl', function PhoneListController($scope) {
+  $scope.persons = [];
+  $scope.onCreate = function(){
+     $scope.persons.push({
+         "person_id": $scope.person.person_id,
+         "first_name": $scope.person.first_name,
+         "last_name": $scope.person.last_name,
+         "middle_name": $scope.person.middle_name,
+         "email": $scope.person.email,
+         "phone_number": $scope.person.phone_number
+     });
+  }
+});
+App.controller('CompanyCtrl', function PhoneListController($scope) {
+  $scope.persons = [];
+  $scope.onCreate = function(){
+     $scope.persons.push({
+         "person_id": $scope.person.person_id,
+         "first_name": $scope.person.first_name,
+         "last_name": $scope.person.last_name,
+         "middle_name": $scope.person.middle_name,
+         "email": $scope.person.email,
+         "phone_number": $scope.person.phone_number
+     });
+  }
 });

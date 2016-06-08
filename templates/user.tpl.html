@@ -1,0 +1,36 @@
+<table id="persone" class="table table-hover">
+    <thead>
+        <tr>
+            <th>user_id</th>
+            <th>nickname</th>
+            <th>department_id</th>
+            <th>person_id</th>
+            <th>position_id</th>
+            <th>super_user</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input class="form-control" type="text" name="user_id" ng-model="user.user_id" value="" /></td>
+            <td><input class="form-control" type="text" name="nickname" ng-model="user.nickname" value="" /></td>
+            <td><input class="form-control" type="text" name="department_id" ng-model="user.department_id" value="" /></td>
+            <td><input class="form-control" type="text" name="person_id" ng-model="user.person_id" value="" /></td>
+            <td><input class="form-control" type="text" name="position_id" ng-model="user.position_id" value="" /></td>
+            <td><input class="form-control" type="text" name="super_user" ng-model="user.super_user" value="" /></td>
+            <td><button class="btn btn-primary" ng-click="onCreate()">Создать</button></td>
+            <td></td>
+        </tr>
+        <tr ng-repeat="user in users">
+            <td>{{user.user_id}}</td>
+            <td>{{user.nickname}}</td>
+            <td>{{user.department_id}}</td>
+            <td>{{user.person_id}}</td>
+            <td>{{user.position_id}}</td>
+            <td>{{user.super_user}}</td>
+            <td><button class="btn btn-primary" ng-click="onEdit(person)">Редактировать</button></td>
+            <td><button class="btn btn-warning" ng-click="onRemove(person)">Удалить</button></td>
+        </tr>
+    </tbody>
+</table>

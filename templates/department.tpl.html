@@ -1,0 +1,36 @@
+<table id="persone" class="table table-hover active">
+    <thead>
+        <tr>
+            <th>person_id</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>middle_name</th>
+            <th>email</th>
+            <th>phone_number</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input class="" type="text" name="person_id" ng-model="person.person_id" value="" /></td>
+            <td><input type="text" name="first_name" ng-model="person.first_name" value="" /></td>
+            <td><input type="text" name="last_name" ng-model="person.last_name" value="" /></td>
+            <td><input type="text" name="middle_name" ng-model="person.middle_name" value="" /></td>
+            <td><input type="text" name="email" ng-model="person.email" value="" /></td>
+            <td><input type="text" name="phone_number" ng-model="person.phone_number" value="" /></td>
+            <td><button class="btn btn-primary" ng-click="onCreate()">Создать</button></td>
+            <td></td>
+        </tr>
+        <tr ng-repeat="person in persons">
+            <td>{{person.person_id}}</td>
+            <td>{{person.first_name}}</td>
+            <td>{{person.last_name}}</td>
+            <td>{{person.middle_name}}</td>
+            <td>{{person.email}}</td>
+            <td>{{person.phone_number}}</td>
+            <td><button class="btn btn-primary" ng-click="onEdit(person)">Редактировать</button></td>
+            <td><button class="btn btn-warning" ng-click="onRemove(person)">Удалить</button></td>
+        </tr>
+    </tbody>
+</table>

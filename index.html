@@ -5,132 +5,30 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/libs/jquery.jgrowl.min.css">
     <link rel="stylesheet" href="/style/style.css">
-  </head>
-  <body>
-      <main class="container">
-        <div class="row">
-            <div class="col-xs-8">
-                 <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                    <li class="active"><a href="#persone" data-toggle="tab">Persone</a></li>
-                    <li><a href="#user" data-toggle="tab">User</a></li>
-                    <li><a href="#position" data-toggle="tab">Position</a></li>
-                    <li><a href="#department" data-toggle="tab">Department</a></li>
-                    <li><a href="#company" data-toggle="tab">Company</a></li>
-                </ul>
-            </div>
-            <div class="col-xs-4">
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Новая запись</button>
-            </div>
-        </div>
-        <div id="my-tab-content" class="tab-content">
-          <table id="persone" class="table table-hover active">
-              <thead>
-                  <tr>
-                      <th>person_id</th>
-                      <th>first_name</th>
-                      <th>last_name</th>
-                      <th>middle_name</th>
-                      <th>email</th>
-                      <th>phone_number</th>
-                  </tr>
-              </thead>
-              <tbody>
-              </tbody>
-          </table>
-          <table id="user" class="table table-hover">
-              <thead>
-                  <tr>
-                      <th>user_id</th>
-                      <th>nickname</th>
-                      <th>department_id</th>
-                      <th>person_id</th>
-                      <th>position_id</th>
-                      <th>super_user</th>
-                  </tr>
-              </thead>
-              <tbody>
-              </tbody>
-          </table>
-          <table id="position" class="table table-hover">
-              <thead>
-                  <tr>
-                      <th>position_id</th>
-                      <th>position_name</th>
-                      <th>salary</th>
-                  </tr>
-              </thead>
-              <tbody>
-              </tbody>
-          </table>
-          <table id="department" class="table table-hover">
-              <thead>
-                  <tr>
-                      <th>department_id</th>
-                      <th>department_name</th>
-                      <th>company_id</th>
-                  </tr>
-              </thead>
-              <tbody>
-              </tbody>
-          </table>
-          <table id="company" class="table table-hover">
-              <thead>
-                  <tr>
-                      <th>company_id</th>
-                      <th>company_name</th>
-                      <th>description</th>
-                      <th data-upload="1">logo</th>
-                  </tr>
-              </thead>
-              <tbody>
-              </tbody>
-          </table>
-      </div>
-  	  </main>
-      <div id="myModal" class="modal fade" role="dialog">
-          <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Новая запись</h4>
-              </div>
-              <div class="modal-body">
-                <form role="form">
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" id="getWrite" class="btn btn-primary" data-dismiss="modal">Сделать запись</button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div id="editModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Редактировать запись</h4>
-                </div>
-                <div class="modal-body">
-                  <form role="form">
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" id="editWrite" class="btn btn-primary" data-dismiss="modal">Сохранить</button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-  </body>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.min.js" charset="utf-8"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-route.min.js" charset="utf-8"></script>
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/libs/jquery.storageapi.min.js"></script>
     <script src="/libs/jquery.jgrowl.min.js" charset="utf-8"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="/bundle.js"></script>
+  </head>
+  <body ng-app="App">
+      <main class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                 <ul id="tabs" class="nav nav-tabs">
+                    <li><a href="#/">Persone</a></li>
+                    <li><a href="#/user">User</a></li>
+                    <li><a href="#/position">Position</a></li>
+                    <li><a href="#/department">Department</a></li>
+                    <li><a href="#/company">Company</a></li>
+                </ul>
+            </div>
+        <div id="my-tab-content" class="col-xs-12" >
+            <div ng-view></div>
+        </div>
+        </div>
+  	  </main>
+  </body>
 </html>

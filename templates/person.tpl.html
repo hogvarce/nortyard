@@ -23,13 +23,13 @@
             <td><button class="btn btn-primary" ng-click="onCreate()">Создать</button></td>
         </tr>
         <tr ng-repeat="person in $storage.person">
-            <td><input class="form-control" type="text" name="person_id" ng-model="person.person_id" value="{{person.person_id}}" /></td>
-            <td><input class="form-control" type="text" name="first_name" ng-model="person.first_name" value="{{person.first_name}}" /></td>
-            <td><input class="form-control" type="text" name="last_name" ng-model="person.last_name" value="{{person.last_name}}" /></td>
-            <td><input class="form-control" type="text" name="middle_name" ng-model="person.middle_name" value="{{person.middle_name}}" /></td>
-            <td><input class="form-control" type="text" name="email" ng-model="person.email" value="{{person.email}}" /></td>
-            <td><input class="form-control" type="text" name="phone_number" ng-model="person.phone_number" value="{{person.phone_number}}" /></td>
-            <td><button class="btn btn-primary" ng-click="onEdit(person, $index)">Редактировать</button></td>
+            <td><input ng-disabled="!edit" class="form-control" type="text" name="person_id" ng-model="person.person_id" value="{{person.person_id}}" /></td>
+            <td><input ng-disabled="!edit" class="form-control" type="text" name="first_name" ng-model="person.first_name" value="{{person.first_name}}" /></td>
+            <td><input ng-disabled="!edit" class="form-control" type="text" name="last_name" ng-model="person.last_name" value="{{person.last_name}}" /></td>
+            <td><input ng-disabled="!edit" class="form-control" type="text" name="middle_name" ng-model="person.middle_name" value="{{person.middle_name}}" /></td>
+            <td><input ng-disabled="!edit" class="form-control" type="text" name="email" ng-model="person.email" value="{{person.email}}" /></td>
+            <td><input ng-disabled="!edit" class="form-control" type="text" name="phone_number" ng-model="person.phone_number" value="{{person.phone_number}}" /></td>
+            <td><input type="checkbox" ng-model="edit"></td>
             <td><button class="btn btn-warning" ng-click="onRemove(person, $index)">Удалить</button></td>
         </tr>
     </tbody>

@@ -17,10 +17,10 @@
             <td></td>
         </tr>
         <tr ng-repeat="department in $storage.department">
-            <td><input class="form-control" type="text" name="department_id" ng-model="department.department_id" value="{{department.department_id}}" /></td>
-            <td><input class="form-control" type="text" name="department_name" ng-model="department.department_name" value="{{department.department_name}}" /></td>
-            <td><input class="form-control" type="text" name="company_id" ng-model="department.company_id" value="{{department.company_id}}" /></td>
-            <td><button class="btn btn-primary" ng-click="onEdit(department, $index)">Редактировать</button></td>
+            <td><input ng-disabled="!edit" class="form-control" type="text" name="department_id" ng-model="department.department_id" value="{{department.department_id}}" /></td>
+            <td><input ng-disabled="!edit" class="form-control" type="text" name="department_name" ng-model="department.department_name" value="{{department.department_name}}" /></td>
+            <td><input ng-disabled="!edit" class="form-control" type="text" name="company_id" ng-model="department.company_id" value="{{department.company_id}}" /></td>
+            <td><input type="checkbox" ng-model="edit"></td>
             <td><button class="btn btn-warning" ng-click="onRemove(department, $index)">Удалить</button></td>
         </tr>
     </tbody>

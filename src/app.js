@@ -1,6 +1,12 @@
 const storage = $.localStorage;
+
 const App = {
     headers: [],
+    promise: new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("result");
+        }, 1500);
+    }),
     renderList: (tab) => {
         let list = storage.get(tab) || [];
         $('.table.active tbody').html('');
@@ -18,7 +24,7 @@ const App = {
         $('.table.active thead tr th').each(function(){
             App.headers.push($(this).text());
         });
-            $(modal).find('.modal-body > form').html('');
+        $(modal).find('.modal-body > form').html('');
         for(let header in App.headers) {
             $(modal).find('.modal-body > form').append('<div class="form-group"><label for="'+App.headers[header]+'">'+App.headers[header]+'</label><input class="form-control" type="text" name="'+App.headers[header]+'"></div>');
         }
@@ -32,9 +38,17 @@ const App = {
             html += '<td>'+$(this).val()+'</td>'
         });
         html += '<td><button class="edit btn btn-primary">Редактировать</button> <button class="remove btn btn-danger">Удалить</button></td></tr>'
-        $('.table.active tbody').append(html);
-        App.saveData(data);
-        $.jGrowl("Запись добавлена", {position: 'bottom-right'});
+        App.promise
+          .then(
+            result => {
+                $('.table.active tbody').append(html);
+                App.saveData(data);
+                $.jGrowl("Запись добавлена", {position: 'bottom-right'});
+            },
+            error => {
+                $.jGrowl("Ошибка записи", {position: 'bottom-right'});
+            }
+          );
     },
     deleteData: (el) => {
         if (confirm("Одумайся, глупец!.. Все-таки удалять?")){
@@ -79,7 +93,16 @@ const App = {
         let list = storage.get(header) || [];
         list.splice(App.itemEdit, 1, {data});
         storage.set(header, list);
-        $('.table.active tbody tr').eq(App.itemEdit).html(html);
+        App.promise
+          .then(
+            result => {
+                $('.table.active tbody tr').eq(App.itemEdit).html(html);
+                $.jGrowl("Запись изменена", {position: 'bottom-right'});
+            },
+            error => {
+                $.jGrowl("Ошибка записи", {position: 'bottom-right'});
+            }
+          );
     }
 };
 

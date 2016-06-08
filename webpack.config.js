@@ -1,6 +1,11 @@
 module.exports = {
   entry: [
-    './src/index.js'
+    './src/index.js',
+    './src/controllers/personController.js',
+    './src/controllers/userController.js',
+    './src/controllers/positionController.js',
+    './src/controllers/departmentController.js',
+    './src/controllers/companyController.js'
   ],
   output: {
     path: __dirname,

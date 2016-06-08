@@ -1,36 +1,30 @@
-<table id="persone" class="table table-hover active">
+<table id="persone" class="table table-hover">
     <thead>
         <tr>
-            <th>person_id</th>
-            <th>first_name</th>
-            <th>last_name</th>
-            <th>middle_name</th>
-            <th>email</th>
-            <th>phone_number</th>
+            <th>company_id</th>
+            <th>company_name</th>
+            <th>description</th>
+            <th>logo</th>
             <th></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><input class="" type="text" name="person_id" ng-model="person.person_id" value="" /></td>
-            <td><input type="text" name="first_name" ng-model="person.first_name" value="" /></td>
-            <td><input type="text" name="last_name" ng-model="person.last_name" value="" /></td>
-            <td><input type="text" name="middle_name" ng-model="person.middle_name" value="" /></td>
-            <td><input type="text" name="email" ng-model="person.email" value="" /></td>
-            <td><input type="text" name="phone_number" ng-model="person.phone_number" value="" /></td>
-            <td><button class="btn btn-primary" ng-click="onCreate()">Создать</button></td>
+            <td><input class="form-control" type="text" name="company_id" ng-model="company.company_id" value="" /></td>
+            <td><input class="form-control" type="text" name="company_name" ng-model="company.company_name" value="" /></td>
+            <td><input class="form-control" type="text" name="description" ng-model="company.description" value="" /></td>
+            <td><input class="form-control" type="file" name="logo" ng-model="company.logo" /></td>
             <td></td>
+            <td><button class="btn btn-primary" ng-click="onCreate()">Создать</button></td>
         </tr>
-        <tr ng-repeat="person in persons">
-            <td>{{person.person_id}}</td>
-            <td>{{person.first_name}}</td>
-            <td>{{person.last_name}}</td>
-            <td>{{person.middle_name}}</td>
-            <td>{{person.email}}</td>
-            <td>{{person.phone_number}}</td>
-            <td><button class="btn btn-primary" ng-click="onEdit(person)">Редактировать</button></td>
-            <td><button class="btn btn-warning" ng-click="onRemove(person)">Удалить</button></td>
+        <tr ng-repeat="company in $storage.company">
+            <td><input class="form-control" type="text" name="company_id" ng-model="company.company_id" value="{{company.company_id}}" /></td>
+            <td><input class="form-control" type="text" name="company_name" ng-model="company.company_name" value="{{company.company_name}}" /></td>
+            <td><input class="form-control" type="text" name="description" ng-model="company.description" value="{{company.description}}" /></td>
+            <td><input class="form-control" type="file" name="logo" ng-model="company.logo" value="{{company.logo}}" /></td>
+            <td><button class="btn btn-primary" ng-click="onEdit(company, $index)">Редактировать</button></td>
+            <td><button class="btn btn-warning" ng-click="onRemove(company, $index)">Удалить</button></td>
         </tr>
     </tbody>
 </table>

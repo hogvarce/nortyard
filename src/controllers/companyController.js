@@ -25,4 +25,9 @@ angular.module('App')
             $.jGrowl("Запись изменена.", {position: 'bottom-right'});
         }
     }
+    $scope.setFile = function(element) {
+        $scope.$apply(function($scope) {
+            $scope.company.logo = element.files[0].name;
+        });
+    }
 });

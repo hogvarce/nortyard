@@ -14,7 +14,7 @@
             <td><input class="form-control" type="text" name="company_id" ng-model="company.company_id" value="" /></td>
             <td><input class="form-control" type="text" name="company_name" ng-model="company.company_name" value="" /></td>
             <td><input class="form-control" type="text" name="description" ng-model="company.description" value="" /></td>
-            <td><input class="form-control" type="file" name="logo" ng-model="company.logo" /></td>
+            <td><input class="form-control" type="file" name="logo" ng-model="company.logo" onchange="angular.element(this).scope().setFile(this)" /></td>
             <td></td>
             <td><button class="btn btn-primary" ng-click="onCreate()">Создать</button></td>
         </tr>
@@ -22,7 +22,7 @@
             <td><input class="form-control" type="text" name="company_id" ng-model="company.company_id" value="{{company.company_id}}" /></td>
             <td><input class="form-control" type="text" name="company_name" ng-model="company.company_name" value="{{company.company_name}}" /></td>
             <td><input class="form-control" type="text" name="description" ng-model="company.description" value="{{company.description}}" /></td>
-            <td><input class="form-control" type="file" name="logo" ng-model="company.logo" value="{{company.logo}}" /></td>
+            <td><input class="form-control" type="text" name="logo" ng-model="company.logo" value="{{company.logo}}" /></td>
             <td><button class="btn btn-primary" ng-click="onEdit(company, $index)">Редактировать</button></td>
             <td><button class="btn btn-warning" ng-click="onRemove(company, $index)">Удалить</button></td>
         </tr>

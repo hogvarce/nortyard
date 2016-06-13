@@ -1,5 +1,5 @@
-angular.module('App')
-.controller('PersonCtrl', function PersonCtrl($scope, $localStorage, $sessionStorage, $q) {
+export default ngModule => {
+ngModule.controller('PersonCtrl', function PersonCtrl($scope, $localStorage, $sessionStorage, $q) {
 
     let asyncGreet = function () {
       var deferred = $q.defer();
@@ -43,3 +43,4 @@ angular.module('App')
       }
   }
 });
+}

@@ -1,11 +1,7 @@
 module.exports = {
+  context: __dirname,
   entry: [
-    './src/index.js',
-    './src/controllers/personController.js',
-    './src/controllers/userController.js',
-    './src/controllers/positionController.js',
-    './src/controllers/departmentController.js',
-    './src/controllers/companyController.js'
+    './src/index.js'
   ],
   output: {
     path: __dirname,
@@ -13,19 +9,11 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['react', 'es2015', 'stage-1']
-      }
-    }]
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './'
+      loaders: [
+        {test: /\.js$/, loader: 'babel'},
+        {test: /\.html$/, loader: 'raw'},
+        {test: /\.css$/, loader: 'style!css'},
+        {test: /\.scss$/, loader: 'style!css!sass'}
+      ]
   }
 };

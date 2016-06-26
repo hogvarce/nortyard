@@ -1,3 +1,2 @@
-export default ngModule => {
-    require('./headers.js')(ngModule);
-}
+module.exports = angular.module('Directives', [])
+require('./headers');

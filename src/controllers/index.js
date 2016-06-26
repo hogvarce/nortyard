@@ -1,7 +1,7 @@
-export default ngModule => {
-    require('./personController.js')(ngModule);
-    require('./userController.js')(ngModule);
-    require('./positionController.js')(ngModule);
-    require('./departmentController.js')(ngModule);
-    require('./companyController.js')(ngModule);
-}
+module.exports = angular.module('Controllers', [])
+require('./personController.js');
+require('./userController.js');
+require('./positionController.js');
+require('./departmentController.js');
+require('./companyController.js');
+require('./headerCtrl.js');

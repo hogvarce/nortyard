@@ -1,17 +1,10 @@
-export default ngModule => {
-    ngModule.directive('headers', headers);
-     function headers() {
+module.exports = angular.module('Directives')
+.directive('headers', () => {
        return {
           restrict: 'E',
-          compile: function(element, attributes){
-              let headers = element.text().split(', ');
-              let html = '<ul class="list-inline">'
-              for (let h in headers) {
-                  html += '<li>'+headers[h]+'</li>'
-              }
-              html += '</ul>';
-              element.html(html);
-          }
+          scope: {},
+          templateUrl: '../../templates/headers.tpl.html',
+          controller: 'HeadersCtrl',
+          controllerAs: 'vm'
        }
-     }
-}
+})

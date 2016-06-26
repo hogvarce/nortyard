@@ -1,11 +1,11 @@
-export default App => {
-App.controller('UserCtrl', function UserCtrl($scope, $localStorage, $sessionStorage, $q) {
+module.exports = angular.module('Controllers')
+.controller('UserCtrl', function UserCtrl($scope, $localStorage, $sessionStorage, $q) {
 
     let asyncGreet = function () {
       var deferred = $q.defer();
       setTimeout(function() {
           deferred.resolve();
-      }, 3500);
+      }, 1500);
       return deferred.promise;
     }
 
@@ -42,5 +42,4 @@ App.controller('UserCtrl', function UserCtrl($scope, $localStorage, $sessionStor
             $.jGrowl("Запись изменена.", {position: 'bottom-right'});
         }
     }
-});
-}
+})

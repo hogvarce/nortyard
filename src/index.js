@@ -1,6 +1,6 @@
-const ngModule = angular.module('App', ['ngRoute', 'ngStorage']);
+angular.module('App', ['ngRoute', 'ngStorage', 'Directives', 'Controllers', 'Services'])
 
-ngModule.config(function($routeProvider){
+.config(function($routeProvider, $locationProvider){
     $routeProvider
         .when('/', {
             templateUrl : '/templates/person.tpl.html',
@@ -25,7 +25,8 @@ ngModule.config(function($routeProvider){
         .otherwise({
             redirectTo: "/"
         })
+    $locationProvider.html5Mode(true);
 });
-
-require('./controllers')(ngModule);
-require('./directives')(ngModule);
+require('./services');
+require('./controllers');
+require('./directives');

@@ -1,11 +1,11 @@
-export default App => {
-App.controller('CompanyCtrl', function CompanyCtrl($scope, $localStorage, $sessionStorage, $q) {
+module.exports = angular.module('Controllers')
+.controller('CompanyCtrl', function CompanyCtrl($scope, $localStorage, $sessionStorage, $q) {
 
     let asyncGreet = function () {
       var deferred = $q.defer();
       setTimeout(function() {
           deferred.resolve();
-      }, 3500);
+      }, 1500);
       return deferred.promise;
     }
 
@@ -45,5 +45,4 @@ App.controller('CompanyCtrl', function CompanyCtrl($scope, $localStorage, $sessi
             $scope.company.logo = element.files[0].name;
         });
     }
-});
-}
+})

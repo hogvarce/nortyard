@@ -1,11 +1,11 @@
-export default App => {
-App.controller('PositionCtrl', function PositionCtrl($scope, $localStorage, $sessionStorage, $q) {
+module.exports = angular.module('Controllers')
+.controller('PositionCtrl', function PositionCtrl($scope, $localStorage, $sessionStorage, $q) {
 
     let asyncGreet = function () {
       var deferred = $q.defer();
       setTimeout(function() {
           deferred.resolve();
-      }, 3500);
+      }, 1500);
       return deferred.promise;
     }
 
@@ -40,4 +40,3 @@ App.controller('PositionCtrl', function PositionCtrl($scope, $localStorage, $ses
         }
     }
 });
-}

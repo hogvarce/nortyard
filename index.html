@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="App">
   <head>
+     <base href="/">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/libs/jquery.jgrowl.min.css">
@@ -18,13 +19,7 @@
       <main class="container">
         <div class="row">
             <div class="col-xs-12">
-                 <ul id="tabs" class="nav nav-tabs">
-                    <li><a href="#/">Persone</a></li>
-                    <li><a href="#/user">User</a></li>
-                    <li><a href="#/position">Position</a></li>
-                    <li><a href="#/department">Department</a></li>
-                    <li><a href="#/company">Company</a></li>
-                </ul>
+                <headers></headers>
             </div>
         <div id="my-tab-content" class="col-xs-12" >
             <div ng-view></div>

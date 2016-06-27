@@ -1,30 +1,20 @@
 <!DOCTYPE html>
 <html ng-app="App">
-  <head>
-     <base href="/">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="/libs/jquery.jgrowl.min.css">
-    <link rel="stylesheet" href="/style/style.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.min.js" charset="utf-8"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-route.min.js" charset="utf-8"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js" charset="utf-8"></script>
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/libs/jquery.storageapi.min.js"></script>
-    <script src="/libs/jquery.jgrowl.min.js" charset="utf-8"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="/bundle.js"></script>
-  </head>
-  <body>
-      <main class="container">
+    <head>
+        <base href="/">
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+        <script src="/bower_components/angular/angular.min.js" charset="utf-8"></script>
+        <script src="/bower_components/angular-route/angular-route.min.js" charset="utf-8"></script>
+        <script src="/bundle.js"></script>
+    </head>
+    <body>
+    <main class="container">
         <div class="row">
-            <div class="col-xs-12">
-                <headers></headers>
-            </div>
-        <div id="my-tab-content" class="col-xs-12" >
-            <div ng-view></div>
+                <search-bar></search-bar>
+                <video-detail></video-detail>
+                <list-videos></list-videos>
+                <select select-ui></select>
         </div>
-        </div>
-  	  </main>
-  </body>
+     </main>
+    </body>
 </html>

@@ -1,0 +1,5 @@
+<div class="col-xs-12 col-md-7">
+    <iframe ng-show="vm.selected.id.videoId" ng-src="{{(vm.selected.id.videoId) ? vm.makeUrl(vm.selected.id.videoId) : ''}}" width="100%" height="450"></iframe>
+    <h2>{{vm.selected.snippet.title}}</h2>
+    <p>{{vm.selected.snippet.description}}</p>
+</div>

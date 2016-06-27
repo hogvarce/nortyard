@@ -1,2 +1,3 @@
-module.exports = angular.module('Services', [])
-require('./headers');
+export default ngModule => {
+    require('./youtube-search')(ngModule);
+}

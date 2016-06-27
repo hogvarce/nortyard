@@ -1,0 +1,8 @@
+<div class="col-xs-12 col-md-5">
+<ul class=" list-group">
+    <li class="list-group-item" ng-repeat="video in vm.videos track by video.etag" ng-click="vm.onSelectVideo(video)">
+        <img ng-src="{{video.snippet.thumbnails.default.url}}">
+        {{video.snippet.title}}
+    </li>
+</ul>
+</div>
